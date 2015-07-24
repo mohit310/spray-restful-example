@@ -1,4 +1,4 @@
-# This example demonstrated the use of following frameworks in SCALA to build a simple RESTful service
+# This example demonstrates the use of following frameworks in SCALA to build a simple RESTful service
 * Scala
 * Spray
 * Spray-JSON
