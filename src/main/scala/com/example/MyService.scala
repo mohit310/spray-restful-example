@@ -28,7 +28,7 @@ trait MyService extends HttpService {
     path("") {
       get {
         respondWithMediaType(`application/json`) {
-          complete("[\"name\": \"Mohit\"]")
+          complete(PersonDB.retrieveAll())
         }
       }
     }
@@ -37,8 +37,8 @@ trait MyService extends HttpService {
     path("person") {
       post {
         respondWithMediaType(`application/json`) {
-          entity(as[Person]) { person =>
-            complete(s"Person: ${person.name} - Age: ${person.age}")
+          entity(as[Person]) { person => PersonDB.insert(person)
+            complete("\"status\" : \"success\"")
           }
         }
       }

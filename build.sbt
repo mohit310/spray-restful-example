@@ -16,8 +16,13 @@ libraryDependencies ++= {
     "io.spray"            %%  "spray-json"    % "1.3.2",
     "com.typesafe.akka"   %%  "akka-actor"    % akkaV,
     "com.typesafe.akka"   %%  "akka-testkit"  % akkaV   % "test",
-    "org.specs2"          %%  "specs2-core"   % "2.3.11" % "test"
+    "org.specs2"          %%  "specs2-core"   % "2.3.11" % "test",
+    "org.sorm-framework"   %  "sorm"          % "0.3.18",
+    "com.h2database"       %  "h2"            % "1.3.148",
+    "org.slf4j"            %  "slf4j-log4j12" % "1.7.12"
   )
 }
+
+dependencyOverrides += "org.scala-lang" % "scala-compiler" % scalaVersion.value
 
 Revolver.settings
