@@ -34,11 +34,11 @@ trait MyService extends HttpService {
     }
 
   val setRoute =
-    path("person") {
-      post {
+    path("") {
+      put {
         respondWithMediaType(`application/json`) {
           entity(as[Person]) { person => PersonDB.insert(person)
-            complete("\"status\" : \"success\"")
+            complete("""{"status" : "success"}""")
           }
         }
       }
