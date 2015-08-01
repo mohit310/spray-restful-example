@@ -1,13 +1,33 @@
 package com.example
 
+import slick.driver.H2Driver.api._
+import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent.{Await, Future}
+import scala.concurrent.duration._
+
+
 /**
- * Created by mkeswani on 7/24/2015.
+ * Created by mohit on 7/31/15.
  */
 object PersonDB {
 
-  def insert(person: Person): Unit = DB.save(person)
+  val persons = TableQuery[Persons]
+  val db = Database.forConfig("h2mem1")
 
-  def retrieveAll(): List[Person] = DB.query[Person].fetch().toList
+  val setup = DBIO.seq(
+    // Create the tables, including primary and foreign keys
+    (persons.schema).create
+  )
 
+  val setupFuture = db.run(setup)
+
+
+  def retrieveAll(): List[Person] = {
+    val q1 = persons.to[List].result
+    val f: Future[List[Person]] = db.run(q1)
+    Await.result(f, 5.seconds)
+  }
+
+  def insert(p: Person): Unit = db.run(DBIO.seq(persons += p))
 
 }

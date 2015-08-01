@@ -4,7 +4,7 @@ import akka.actor.Actor
 import spray.routing._
 import spray.http._
 import MediaTypes._
-import com.example.PersonJsonProtocol._
+import PersonJsonProtocol._
 
 // we don't implement our route structure directly in the service actor because
 // we want to be able to test it independently, without having to spin up an actor
@@ -38,7 +38,7 @@ trait MyService extends HttpService {
       put {
         respondWithMediaType(`application/json`) {
           entity(as[Person]) { person => PersonDB.insert(person)
-            complete("""{"status" : "success"}""")
+            complete( """{"status" : "success"}""")
           }
         }
       }
