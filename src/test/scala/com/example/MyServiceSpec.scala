@@ -19,7 +19,7 @@ class MyServiceSpec extends Specification with Specs2RouteTest with MyService {
     }
 
     "return a Person for GET requests to the root path" in {
-      Get() ~> getRoute ~> check {
+      Get("/") ~> getRoute ~> check {
         responseAs[String] contains "Mohit Keswani"
       }
     }

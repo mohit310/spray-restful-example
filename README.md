@@ -2,8 +2,8 @@
 * Scala
 * Spray
 * Spray-JSON
-* SORM
+* Slick - From TypeSafe
 
-## The example has a single domain object as a case class named Person and persists it in h2 in-memory database using SORM
+## The example has a single domain object as a case class named Person and persists it in h2 in-memory database using SLICK
 ### Run the application. Check curl_commands.txt to send a post request to create Person object. Run http://localhost:8080 to get all created Person(s)
 
